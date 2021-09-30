@@ -1,12 +1,45 @@
-#heading {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+* {
+    box-sizing: border-box;
     text-align: center;
 }
 
+:root {
+    font-family: 'Roboto', sans-serif;
+}
+
+#heading {
+    background-color: #40e0d0;
+    padding: 1rem;
+}
+
 #container {
-    width: 400px;
-    margin: auto;
+    max-width: 400px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+}
+
+#input-date {
+    margin-left: 0.5rem;
 }
 
 #check-btn {
+    background-color: aquamarine;
+    border-color: transparent;
     display: block;
+    padding: 0.3rem 2rem;
+    margin: 2rem auto;
+    cursor: pointer;
+    border-radius: 0.5rem;
+}
+
+#output {
+    font-weight: 800;
+    line-height: 2rem;
+}
+
+span {
+    background-color: aquamarine;
+    padding: 0.2rem 0.5rem;
 }

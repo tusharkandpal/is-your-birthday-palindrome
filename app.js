@@ -119,10 +119,86 @@ function getNextPalindromeDate(dob) {
   return [counter, nextDate];
 }
 
-date = {
-  day: 15,
-  month: 8,
-  year: 2020,
-};
+// function getPreviousDate(dob) {
+//   let day = dob.day - 1;
+//   let month = dob.month;
+//   let year = dob.year;
 
-console.log(getNextPalindromeDate(date));
+//   let daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+//   if (day < 1) {
+//     day = daysInMonth[month - 2];
+//     month--;
+//   }
+
+//   if (month < 1) {
+//     month = 12;
+//     year--;
+//   }
+
+//   return {
+//     day: day,
+//     month: month,
+//     year: year,
+//   };
+// }
+
+// function getPreviousPalindromeDate(dob) {
+//   let counter = 0;
+
+//   let previousDate = getPreviousDate(dob);
+
+//   while (1) {
+//     counter++;
+//     let isPalindrome = checkPalindromeForAllDateFormats(previousDate);
+
+//     if (isPalindrome) break;
+
+//     previousDate = getPreviousDate(previousDate);
+//   }
+
+//   return [counter, previousDate];
+// }
+
+// function findNearestPalindromeDate(dob) {
+//   let nextDateList = getNextPalindromeDate(dob);
+
+//   let previousDateList = getPreviousPalindromeDate(dob);
+
+//   if (previousDateList[0] < nextDateList[0]) {
+//     return previousDateList;
+//   } else return nextDateList;
+// }
+
+// console.log(getPreviousPalindromeDate(date));
+
+function clickHandler() {
+  let birthdate = dateOfBirth.value;
+
+  if (birthdate !== "") {
+    let listOfDates = birthdate.split("-");
+
+    let date = {
+      day: Number(listOfDates[2]),
+      month: Number(listOfDates[1]),
+      year: Number(listOfDates[0]),
+    };
+
+    let flag = checkPalindromeForAllDateFormats(date);
+
+    if (flag) {
+      output.innerHTML = `<span>Yay! your birthday is a palindrome 🥳✨</span>`;
+    } else {
+      let [missedDays, nextDate] = getNextPalindromeDate(date);
+
+      output.innerHTML = `<p>Nope! your birthdate is not a palindrome 😥. The next palindrome date is <span>${nextDate.day}-${nextDate.month}-${nextDate.year}</span> ; missed it by <span>${missedDays}</span> days.</p>`;
+    }
+  }
+  else
+  {
+    output.innerHTML = `<p style='color: red'>Please enter a date!</p>`;
+  }
+}
+
+checkBtn.addEventListener("click", clickHandler);
+
